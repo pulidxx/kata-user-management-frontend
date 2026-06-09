@@ -166,15 +166,6 @@ export default function LandingPage() {
 
           <div className="container mx-auto max-w-screen-xl px-6 relative z-10">
             <div className="grid lg:grid-cols-12 gap-8 items-start">
-              <div className="lg:col-span-12 mb-8">
-                <div className="inline-flex items-center gap-3 rounded-full border border-primary/20 bg-primary/5 px-5 py-2 text-sm font-medium text-primary backdrop-blur-sm">
-                  <FiPieChart className="h-4 w-4" />
-                  <span>Plataforma Corporativa</span>
-                  <span className="w-1.5 h-1.5 rounded-full bg-primary/40"></span>
-                  <span className="text-xs">v1.0</span>
-                </div>
-              </div>
-
               <div className="lg:col-span-8">
                 <h1 className="text-6xl font-extrabold tracking-tight sm:text-7xl md:text-8xl leading-[1.1]">
                   Gestión integral de{" "}
@@ -244,7 +235,8 @@ export default function LandingPage() {
                 Capacidades del sistema
               </h2>
               <p className="mt-4 text-lg text-muted-foreground">
-                Todo lo que necesita para administrar sus clientes en una plataforma completa
+                Todo lo que necesita para administrar sus clientes en una
+                plataforma completa
               </p>
             </div>
 
@@ -255,10 +247,13 @@ export default function LandingPage() {
                   <div className="mb-8 rounded-2xl bg-primary/10 p-4 text-primary w-fit group-hover:scale-110 transition-transform">
                     <FiUserPlus className="h-8 w-8" />
                   </div>
-                  <h3 className="text-2xl font-bold mb-3">Registro de Clientes</h3>
+                  <h3 className="text-2xl font-bold mb-3">
+                    Registro de Clientes
+                  </h3>
                   <p className="text-muted-foreground leading-relaxed">
-                    Ingrese y almacene información completa de nuevos clientes: datos personales, 
-                    contacto, dirección y documentos de identificación.
+                    Ingrese y almacene información completa de nuevos clientes:
+                    datos personales, contacto, dirección y documentos de
+                    identificación.
                   </p>
                   <div className="mt-6 flex items-center text-sm text-primary/70 group-hover:text-primary transition-colors">
                     <span>Gestión optimizada</span>
@@ -281,7 +276,9 @@ export default function LandingPage() {
                 <div className="rounded-xl bg-emerald-500/10 p-3 text-emerald-500 w-fit mb-4">
                   <FiUsers className="h-5 w-5" />
                 </div>
-                <h3 className="text-lg font-bold mb-2">Directorio Centralizado</h3>
+                <h3 className="text-lg font-bold mb-2">
+                  Directorio Centralizado
+                </h3>
                 <p className="text-sm text-muted-foreground">
                   Visualice todo su portafolio de clientes en una sola vista.
                 </p>
@@ -291,9 +288,11 @@ export default function LandingPage() {
                 <div className="rounded-xl bg-orange-500/10 p-3 text-orange-500 w-fit mb-4">
                   <FiFileText className="h-5 w-5" />
                 </div>
-                <h3 className="text-lg font-bold mb-2">Historial y Seguimiento</h3>
+                <h3 className="text-lg font-bold mb-2">
+                  Historial y Seguimiento
+                </h3>
                 <p className="text-sm text-muted-foreground">
-                  Acceda al detalle completo de cada cliente: fecha de registro, 
+                  Acceda al detalle completo de cada cliente: fecha de registro,
                   interacciones y notas comerciales.
                 </p>
               </div>
@@ -306,19 +305,26 @@ export default function LandingPage() {
                     </div>
                   </div>
                   <div>
-                    <h3 className="font-bold text-lg mb-2">Interfaz Intuitiva y Rápida</h3>
+                    <h3 className="font-bold text-lg mb-2">
+                      Interfaz Intuitiva y Rápida
+                    </h3>
                     <p className="text-sm text-muted-foreground leading-relaxed">
-                      Diseñada para que usted pueda registrar y consultar clientes en segundos, 
-                      sin complicaciones técnicas. Enfoque en lo que realmente importa: su gestión comercial.
+                      Diseñada para que usted pueda registrar y consultar
+                      clientes en segundos, sin complicaciones técnicas. Enfoque
+                      en lo que realmente importa: su gestión comercial.
                     </p>
                     <div className="flex items-center gap-3 mt-3">
                       <div className="flex items-center gap-1">
                         <FiCheckCircle className="h-3 w-3 text-green-500" />
-                        <span className="text-xs text-muted-foreground">Sin curva de aprendizaje</span>
+                        <span className="text-xs text-muted-foreground">
+                          Sin curva de aprendizaje
+                        </span>
                       </div>
                       <div className="flex items-center gap-1">
                         <FiCheckCircle className="h-3 w-3 text-green-500" />
-                        <span className="text-xs text-muted-foreground">Resultados inmediatos</span>
+                        <span className="text-xs text-muted-foreground">
+                          Resultados inmediatos
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -330,7 +336,7 @@ export default function LandingPage() {
 
         <section className="relative py-24 md:py-32 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-primary/15 via-background to-background -z-10"></div>
-          
+
           <div className="container mx-auto max-w-screen-xl px-6">
             <div className="grid md:grid-cols-2 gap-0 rounded-3xl overflow-hidden border border-border/40 bg-background/60 backdrop-blur-md">
               <div className="p-8 md:p-12 flex flex-col justify-center">
@@ -342,8 +348,8 @@ export default function LandingPage() {
                   ¿Listo para optimizar su gestión comercial?
                 </h2>
                 <p className="text-muted-foreground mb-8">
-                  Acceda al sistema y comience a registrar y consultar clientes de
-                  manera rápida, segura y centralizada.
+                  Acceda al sistema y comience a registrar y consultar clientes
+                  de manera rápida, segura y centralizada.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Link
@@ -360,14 +366,18 @@ export default function LandingPage() {
                 <div className="grid grid-cols-2 gap-4 w-full max-w-sm">
                   <div className="rounded-2xl bg-background/80 backdrop-blur-md border border-border/40 p-4 text-center shadow-lg transition-all hover:scale-105">
                     <div className="text-3xl font-bold text-primary">+50%</div>
-                    <div className="text-xs text-muted-foreground mt-1">Eficiencia</div>
+                    <div className="text-xs text-muted-foreground mt-1">
+                      Eficiencia
+                    </div>
                     <div className="mt-2 h-1 w-full bg-primary/10 rounded-full overflow-hidden">
                       <div className="h-full w-3/4 bg-primary/40 rounded-full"></div>
                     </div>
                   </div>
                   <div className="rounded-2xl bg-background/80 backdrop-blur-md border border-border/40 p-4 text-center shadow-lg transition-all hover:scale-105">
                     <div className="text-3xl font-bold text-primary">24/7</div>
-                    <div className="text-xs text-muted-foreground mt-1">Disponibilidad</div>
+                    <div className="text-xs text-muted-foreground mt-1">
+                      Disponibilidad
+                    </div>
                     <div className="mt-2 h-1 w-full bg-primary/10 rounded-full overflow-hidden">
                       <div className="h-full w-full bg-primary/40 rounded-full"></div>
                     </div>
@@ -375,9 +385,13 @@ export default function LandingPage() {
                   <div className="col-span-2 rounded-2xl bg-background/80 backdrop-blur-md border border-border/40 p-4 text-center shadow-lg transition-all hover:scale-105">
                     <div className="flex items-center justify-center gap-2">
                       <FiPenTool className="h-4 w-4 text-primary" />
-                      <span className="text-sm font-medium">Registro en segundos</span>
+                      <span className="text-sm font-medium">
+                        Registro en segundos
+                      </span>
                     </div>
-                    <div className="text-xs text-muted-foreground mt-1">Flujo optimizado</div>
+                    <div className="text-xs text-muted-foreground mt-1">
+                      Flujo optimizado
+                    </div>
                   </div>
                 </div>
               </div>
@@ -395,7 +409,8 @@ export default function LandingPage() {
               className="h-5 w-5 grayscale opacity-50"
             />
             <p className="text-sm text-muted-foreground">
-              &copy; {new Date().getFullYear()} Banco de Bogotá - Gestión de Clientes
+              &copy; {new Date().getFullYear()} Banco de Bogotá - Gestión de
+              Clientes
             </p>
           </div>
           <div className="flex items-center gap-6 text-sm text-muted-foreground">
@@ -414,7 +429,8 @@ export default function LandingPage() {
 
       <style jsx>{`
         @keyframes float {
-          0%, 100% {
+          0%,
+          100% {
             transform: translateY(0px) translateX(0px);
           }
           25% {
