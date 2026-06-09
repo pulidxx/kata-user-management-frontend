@@ -1,0 +1,96 @@
+name: Deploy Frontend to AWS
+
+on:
+  push:
+    branches:
+      - qa
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Cache node modules
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Force reinstall lightningcss
+        run: npm install --force lightningcss
+
+      - name: Build frontend
+        env:
+          NEXT_PUBLIC_API_URL: ${{ secrets.API_URL_QA }}
+        run: npm run build
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.9.0
+
+      - name: Terraform Init
+        run: terraform init
+        working-directory: deploy/iac-qa
+
+      - name: Terraform Format Check
+        run: terraform fmt -check
+        working-directory: deploy/iac-qa
+        continue-on-error: true
+
+      - name: Terraform Validate
+        run: terraform validate
+        working-directory: deploy/iac-qa
+
+      - name: Terraform Plan
+        run: terraform plan -out=tfplan
+        working-directory: deploy/iac-qa
+
+      - name: Terraform Apply
+        run: terraform apply -auto-approve tfplan
+        working-directory: deploy/iac-qa
+
+      - name: Get S3 Bucket Name
+        id: bucket
+        run: echo "bucket_name=$(terraform output -raw s3_bucket_name)" >> $GITHUB_OUTPUT
+        working-directory: deploy/iac-qa
+
+      - name: Get CloudFront Distribution ID
+        id: cloudfront
+        run: echo "distribution_id=$(terraform output -raw cloudfront_distribution_id)" >> $GITHUB_OUTPUT
+        working-directory: deploy/iac-qa
+
+      - name: Sync build to S3
+        run: |
+          aws s3 sync out/ s3://${{ steps.bucket.outputs.bucket_name }}/ --delete
+
+      - name: Invalidate CloudFront Cache
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id ${{ steps.cloudfront.outputs.distribution_id }} \
+            --paths "/*"
+
+      - name: Output Website URL
+        run: terraform output website_url
+        working-directory: deploy/iac-qa
