@@ -1,0 +1,17 @@
+{
+  "name": "Portal BdB - Gestión de Clientes",
+  "short_name": "Portal BdB",
+  "description": "Plataforma del Banco de Bogotá para administrar clientes",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1e3a8a",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/logo-banco-bogota.svg",
+      "type": "image/svg+xml",
+      "sizes": "any"
+    }
+  ]
+}

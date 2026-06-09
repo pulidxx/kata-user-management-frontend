@@ -6,19 +6,14 @@ import {
   FiMoon,
   FiSun,
   FiUsers,
-  FiShield,
   FiLock,
   FiChevronRight,
   FiPieChart,
   FiUserPlus,
   FiSearch,
   FiFileText,
-  FiActivity,
-  FiDatabase,
-  FiZap,
   FiCheckCircle,
   FiEye,
-  FiPenTool,
 } from "react-icons/fi";
 import { useTheme } from "@/shared/hooks/useTheme";
 
@@ -54,12 +49,6 @@ export default function LandingPage() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const stats = [
-    { value: "24/7", label: "Disponible", icon: FiActivity },
-    { value: "100%", label: "Centralizado", icon: FiDatabase },
-    { value: "En línea", label: "Tiempo real", icon: FiZap },
-  ];
-
   const particles = useMemo(() => {
     if (!mounted) return [];
     return Array.from({ length: 30 }, (_, i) => ({
@@ -77,11 +66,11 @@ export default function LandingPage() {
       <header className="fixed top-0 z-50 w-full border-b border-border/40 bg-background/80 backdrop-blur-md">
         <div className="container mx-auto flex h-16 max-w-screen-xl items-center justify-between px-6">
           <div className="flex items-center gap-4">
-            <div className="rounded-md bg-white p-1 shadow-sm">
+            <div className="rounded-md bg-background border border-border/40 p-1.5 shadow-sm">
               <img
                 src="/logo-banco-bogota.svg"
                 alt="Banco de Bogotá"
-                className="h-7 w-7"
+                className="h-6 w-6"
               />
             </div>
             <div className="flex flex-col">
@@ -177,42 +166,19 @@ export default function LandingPage() {
               </div>
 
               <div className="lg:col-span-4">
-                <div className="flex flex-col gap-4">
-                  {stats.map((stat, index) => (
-                    <div
-                      key={index}
-                      className="group flex items-center gap-4 rounded-2xl border border-border/40 bg-card/40 backdrop-blur-sm p-4 transition-all hover:border-primary/30 hover:bg-card/60"
-                    >
-                      <div className="rounded-xl bg-primary/10 p-2.5 text-primary group-hover:scale-110 transition-transform">
-                        <stat.icon className="h-5 w-5" />
-                      </div>
-                      <div>
-                        <div className="text-2xl font-bold">{stat.value}</div>
-                        <div className="text-xs text-muted-foreground uppercase tracking-wider">
-                          {stat.label}
-                        </div>
-                      </div>
-                    </div>
-                  ))}
+                <div className="relative w-full h-96">
+                  <div className="absolute top-4 right-8 w-64 h-64 bg-primary/15 dark:bg-primary/25 rounded-3xl transform rotate-12 opacity-60 dark:opacity-40"></div>
+                  <div className="absolute bottom-8 left-4 w-72 h-72 bg-blue-500/15 dark:bg-blue-400/30 rounded-3xl transform -rotate-12 opacity-60 dark:opacity-50"></div>
+                  <div className="absolute top-1/3 right-1/4 w-56 h-56 bg-purple-500/10 dark:bg-purple-400/20 rounded-full opacity-50 dark:opacity-35"></div>
                 </div>
               </div>
 
-              <div className="lg:col-span-7 mt-6">
+              <div className="lg:col-span-12 mt-6">
                 <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl">
                   Registre, consulte y administre su base de clientes de manera
                   centralizada. Una solución diseñada para optimizar la gestión
                   comercial del Banco de Bogotá con rapidez y seguridad.
                 </p>
-              </div>
-
-              <div className="lg:col-span-5 mt-6">
-                <Link
-                  href="/login"
-                  className="group inline-flex h-14 w-full md:w-auto items-center justify-center rounded-xl bg-primary px-8 text-base font-semibold text-primary-foreground shadow-lg shadow-primary/20 transition-all hover:bg-primary/90 hover:shadow-xl hover:shadow-primary/30 hover:scale-105"
-                >
-                  Comenzar a gestionar
-                  <FiChevronRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                </Link>
               </div>
             </div>
 
@@ -326,71 +292,6 @@ export default function LandingPage() {
                           Resultados inmediatos
                         </span>
                       </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="relative py-24 md:py-32 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/15 via-background to-background -z-10"></div>
-
-          <div className="container mx-auto max-w-screen-xl px-6">
-            <div className="grid md:grid-cols-2 gap-0 rounded-3xl overflow-hidden border border-border/40 bg-background/60 backdrop-blur-md">
-              <div className="p-8 md:p-12 flex flex-col justify-center">
-                <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary w-fit mb-6">
-                  <FiShield className="h-3 w-3" />
-                  <span>Certificación Bancaria</span>
-                </div>
-                <h2 className="text-3xl font-bold tracking-tight md:text-4xl mb-4">
-                  ¿Listo para optimizar su gestión comercial?
-                </h2>
-                <p className="text-muted-foreground mb-8">
-                  Acceda al sistema y comience a registrar y consultar clientes
-                  de manera rápida, segura y centralizada.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <Link
-                    href="/login"
-                    className="inline-flex h-12 items-center justify-center rounded-lg bg-primary px-8 text-base font-semibold text-primary-foreground shadow-lg shadow-primary/20 transition-all hover:bg-primary/90 hover:shadow-xl hover:shadow-primary/30"
-                  >
-                    Acceder ahora
-                    <FiChevronRight className="ml-2 h-5 w-5" />
-                  </Link>
-                </div>
-              </div>
-
-              <div className="relative bg-gradient-to-br from-primary/5 to-primary/3 p-8 md:p-12 flex items-center justify-center min-h-[300px]">
-                <div className="grid grid-cols-2 gap-4 w-full max-w-sm">
-                  <div className="rounded-2xl bg-background/80 backdrop-blur-md border border-border/40 p-4 text-center shadow-lg transition-all hover:scale-105">
-                    <div className="text-3xl font-bold text-primary">+50%</div>
-                    <div className="text-xs text-muted-foreground mt-1">
-                      Eficiencia
-                    </div>
-                    <div className="mt-2 h-1 w-full bg-primary/10 rounded-full overflow-hidden">
-                      <div className="h-full w-3/4 bg-primary/40 rounded-full"></div>
-                    </div>
-                  </div>
-                  <div className="rounded-2xl bg-background/80 backdrop-blur-md border border-border/40 p-4 text-center shadow-lg transition-all hover:scale-105">
-                    <div className="text-3xl font-bold text-primary">24/7</div>
-                    <div className="text-xs text-muted-foreground mt-1">
-                      Disponibilidad
-                    </div>
-                    <div className="mt-2 h-1 w-full bg-primary/10 rounded-full overflow-hidden">
-                      <div className="h-full w-full bg-primary/40 rounded-full"></div>
-                    </div>
-                  </div>
-                  <div className="col-span-2 rounded-2xl bg-background/80 backdrop-blur-md border border-border/40 p-4 text-center shadow-lg transition-all hover:scale-105">
-                    <div className="flex items-center justify-center gap-2">
-                      <FiPenTool className="h-4 w-4 text-primary" />
-                      <span className="text-sm font-medium">
-                        Registro en segundos
-                      </span>
-                    </div>
-                    <div className="text-xs text-muted-foreground mt-1">
-                      Flujo optimizado
                     </div>
                   </div>
                 </div>
