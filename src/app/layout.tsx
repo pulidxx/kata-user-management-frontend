@@ -11,10 +11,37 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Portal BdB — Gestión de Clientes",
+  title: {
+    default: "Portal BdB — Gestión de Clientes",
+    template: "%s | Portal BdB",
+  },
   description:
     "Plataforma del Banco de Bogotá para administrar clientes, controlar permisos por roles, búsquedas avanzadas, filtros y estados.",
-  generator: "v0.app",
+  generator: "Next.js",
+  applicationName: "Portal BdB",
+  authors: [{ name: "Banco de Bogotá" }],
+  keywords: [
+    "CRM",
+    "Banco de Bogotá",
+    "gestión de clientes",
+    "administración",
+    "portal interno",
+  ],
+  robots: {
+    index: false,
+    follow: false,
+    nocache: true,
+    googleBot: {
+      index: false,
+      follow: false,
+    },
+  },
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 5,
+  },
+  manifest: "/manifest.json",
   icons: {
     icon: [
       {
@@ -23,6 +50,27 @@ export const metadata: Metadata = {
       },
     ],
     apple: "/logo-banco-bogota.svg",
+  },
+  openGraph: {
+    type: "website",
+    locale: "es_CO",
+    siteName: "Portal BdB",
+    title: "Portal BdB — Gestión de Clientes",
+    description:
+      "Plataforma del Banco de Bogotá para administrar clientes, controlar permisos por roles, búsquedas avanzadas, filtros y estados.",
+    images: [
+      {
+        url: "/logo-banco-bogota.svg",
+        width: 1200,
+        height: 630,
+        alt: "Portal BdB - Banco de Bogotá",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary",
+    title: "Portal BdB — Gestión de Clientes",
+    description: "Plataforma del Banco de Bogotá para administrar clientes",
   },
 };
 
