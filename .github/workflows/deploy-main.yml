@@ -30,6 +30,9 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Force reinstall lightningcss
+        run: npm install --force lightningcss
+
       - name: Build frontend
         env:
           NEXT_PUBLIC_API_URL: ${{ secrets.API_URL_PROD }}
