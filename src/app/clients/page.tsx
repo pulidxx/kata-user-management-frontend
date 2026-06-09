@@ -1,7 +1,6 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import Link from "next/link";
 import {
   FiPlus,
   FiDownload,
@@ -29,6 +28,7 @@ import { StatusBadge } from "@/features/clients/components/status-badge";
 import { ConfirmDialog } from "@/shared/components/feedback/confirm-dialog";
 import { StatusChangeModal } from "@/features/clients/components/status-change-modal";
 import { ClientFormModal } from "@/features/clients/components/client-form-modal";
+import { ClientDetailModal } from "@/features/clients/components/client-detail-modal";
 import { Spinner } from "@/shared/components/feedback/spinner";
 import { useToast } from "@/shared/components/feedback/toast";
 import {
@@ -80,6 +80,7 @@ function ClientsContent() {
   const [editing, setEditing] = useState<Client | undefined>();
   const [deleting, setDeleting] = useState<Client | undefined>();
   const [statusTarget, setStatusTarget] = useState<Client | undefined>();
+  const [viewingClient, setViewingClient] = useState<string | null>(null);
   const [actionLoading, setActionLoading] = useState(false);
 
   const userMap = useMemo(
@@ -352,7 +353,7 @@ function ClientsContent() {
                     <td className="px-4 py-3">
                       <RowActions
                         client={c}
-                        onView={() => {}}
+                        onView={() => setViewingClient(c.id)}
                         onEdit={() => {
                           setEditing(c);
                           setFormOpen(true);
@@ -409,7 +410,7 @@ function ClientsContent() {
                 <div className="mt-3 flex justify-end border-t border-border pt-3">
                   <RowActions
                     client={c}
-                    onView={() => {}}
+                    onView={() => setViewingClient(c.id)}
                     onEdit={() => {
                       setEditing(c);
                       setFormOpen(true);
@@ -516,11 +517,19 @@ function ClientsContent() {
           onConfirm={confirmStatus}
         />
       )}
+
+      {viewingClient && (
+        <ClientDetailModal
+          clientId={viewingClient}
+          onClose={() => setViewingClient(null)}
+        />
+      )}
     </div>
   );
 
   function RowActions({
     client,
+    onView,
     onEdit,
     onStatus,
     onDelete,
@@ -533,13 +542,13 @@ function ClientsContent() {
   }) {
     return (
       <div className="flex items-center justify-end gap-1">
-        <Link
-          href={`/clients/${client.id}`}
+        <button
+          onClick={onView}
           aria-label="Ver detalle"
           className="rounded-lg p-2 text-muted-foreground transition hover:bg-muted hover:text-foreground"
         >
           <FiEye size={16} />
-        </Link>
+        </button>
         {canChangeStatus(user, client) && (
           <button
             onClick={onStatus}
