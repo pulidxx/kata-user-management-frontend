@@ -9,11 +9,11 @@ terraform {
   }
 
   backend "s3" {
-    bucket       = "user-frontend-apuli13-prod-tf-state"
-    key          = "terraform.tfstate"
-    region       = "us-east-1"
+    bucket         = "user-frontend-apuli13-prod-tf-state"
+    key            = "terraform.tfstate"
+    region         = "us-east-1"
     dynamodb_table = "user-frontend-apuli13-prod-terraform-locks"
-    encrypt      = true
+    encrypt        = true
   }
 }
 
