@@ -7,9 +7,12 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "type-check": "tsc --noEmit",
     "test": "vitest",
     "test:ui": "vitest --ui",
-    "test:coverage": "vitest --coverage"
+    "test:coverage": "vitest --coverage",
+    "validate": "npm run lint && npm run test -- --run && npm run build"
   },
   "dependencies": {
     "@base-ui/react": "^1.5.0",
@@ -29,6 +32,7 @@
     "yup": "^1.7.1"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3.3.5",
     "@tailwindcss/postcss": "^4.2.0",
     "@testing-library/jest-dom": "^6.0.0",
     "@testing-library/react": "^16.0.0",
@@ -36,8 +40,12 @@
     "@types/node": "^24",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@typescript-eslint/eslint-plugin": "^8.61.0",
+    "@typescript-eslint/parser": "^8.61.0",
     "@vitejs/plugin-react": "^4.3.0",
     "@vitest/ui": "^1.6.0",
+    "eslint": "^9.39.4",
+    "eslint-config-next": "^16.2.7",
     "jsdom": "^26.0.0",
     "postcss": "^8.5",
     "prettier": "^3.8.3",
